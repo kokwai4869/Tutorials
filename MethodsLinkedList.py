@@ -138,12 +138,3 @@ def createList(array, n):
         linkedList.insertEnd(array[i])
     return linkedList
     
-if __name__=='__main__':
-    t = 2
-    n = [5,6]
-    array = [[1,2,3,4,5], [2,3,6,7,5,1]]
-    #rotate = [2,2]
-    for i in range(t):        
-        head = createList(array[i], n[i])
-        #head.getRotate(rotate[i])
-        print(head.printList()  )
