@@ -15,13 +15,14 @@ def readText(data):
         contents = file.read()
     return contents
 
-def prepareData(data):
+def prepareDataString(data):
     """
     Prepare data based on the lines
     
     return list of first and second lines
     """
     data_split = data.split("\n")
+    n_test = int(data_split[0])
     test_cases = data_split[1:]
     first_line = []
     second_line = []
@@ -29,4 +30,4 @@ def prepareData(data):
         first_line.append(test_cases[i])
     for i in range(1, len(test_cases), 2):
         second_line.append(test_cases[i])
-    return first_line, second_line
+    return n_test, first_line, second_line
