@@ -128,11 +128,11 @@ def longest_common_prefix_in_an_array(data):
                     result.append(string_list[ii][:index])
                 index += 1
         result_count = Counter(result)
-        dictionary_word_count_len = {word:count for
+        dictionary_word_count = {word:count for
                                      word,count in result_count.items()}
-        common_prefix_count_value = max(dictionary_word_count_len.values())
+        common_prefix_count_value = max(dictionary_word_count.values())
         common_prefix_result = []
-        for word,count in dictionary_word_count_len.items():
+        for word,count in dictionary_word_count.items():
             if count == common_prefix_count_value:
                 common_prefix_result.append(word)
         results.append(max(common_prefix_result,key=len))
