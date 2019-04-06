@@ -76,7 +76,37 @@ def roman_number_to_integer(data):
                 count -= dictionary[string_list[i]]
         results.append(count)
     return results
-                    
-                    
+
+def anagram(data):
+    n_test = data[0]
+    data = data[1]
+    results = []
+    for i in range(n_test):
+        first, second = data[i].split()
+        if "".join(sorted(first)) == "".join(sorted(second)):
+            results.append("YES")
+        else:
+            results.append("NO")
+    return results
+
+def longest_common_substring(data):
+    n_test = data[0]
+    data = data[1]
+    results = []
+    partitions = round(len(data)/n_test)
+    for i in range(0, len(data), partitions):
+        len_first, len_second = data[i].split()
+        first = data[i+1]
+        second = data[i+2]
+        # This is too expensive and need to check for similar better
+        substring_first = [first[j:i+1] for i in range(len(first)) for
+                           j in range(0,i)] + list(*[iter(first)])
+        substring_second = [second[j:i+1] for i in range(len(second)) for
+                           j in range(0,i)] + list(*[iter(second)])
+        similar = list(map(lambda x: len(x),
+                           set(substring_second).intersection(
+                                   set(substring_first))))
+        results.append(max(similar))
+    return results
             
     
