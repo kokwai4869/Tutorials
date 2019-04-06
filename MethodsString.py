@@ -5,6 +5,7 @@ Created on Fri Apr  5 17:36:21 2019
 @author: admin
 """
 from itertools import permutations
+from collections import Counter
 
 def get_longest_palindrome(data):
     n_test = data[0]
@@ -98,7 +99,7 @@ def longest_common_substring(data):
         len_first, len_second = data[i].split()
         first = data[i+1]
         second = data[i+2]
-        # This is too expensive and need to check for similar better
+        # This is too expensive and need to edit but Im just too lazy to think
         substring_first = [first[j:i+1] for i in range(len(first)) for
                            j in range(0,i)] + list(*[iter(first)])
         substring_second = [second[j:i+1] for i in range(len(second)) for
@@ -109,4 +110,30 @@ def longest_common_substring(data):
         results.append(max(similar))
     return results
             
-    
+def longest_common_prefix_in_an_array(data):
+    # Alright, this is SUPER EXPENSIVE, I still need to improve! NEED EDIT!
+    #Im freaking lazy!!!
+    n_test = data[0]
+    data = data[1]
+    results = []
+    partitions = round(len(data)/n_test)
+    for i in range(0, len(data), partitions):
+        string_list = data[i+1].split()
+        result = []
+        for ii in range(int(data[i])):
+            index = 1
+            for iii in range(len(string_list[ii])):
+                if string_list[ii][:index] in \
+                string_list[(ii+1)%len(data[i])][:index]:
+                    result.append(string_list[ii][:index])
+                index += 1
+        result_count = Counter(result)
+        dictionary_word_count_len = {word:count for
+                                     word,count in result_count.items()}
+        common_prefix_count_value = max(dictionary_word_count_len.values())
+        common_prefix_result = []
+        for word,count in dictionary_word_count_len.items():
+            if count == common_prefix_count_value:
+                common_prefix_result.append(word)
+        results.append(max(common_prefix_result,key=len))
+    return results
