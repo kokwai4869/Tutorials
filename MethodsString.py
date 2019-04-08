@@ -137,3 +137,17 @@ def longest_common_prefix_in_an_array(data):
                 common_prefix_result.append(word)
         results.append(max(common_prefix_result,key=len))
     return results
+
+def merge_the_tools(data):
+    """
+    Input: original data and not prepared data.
+    """
+    data = data.split("\n")
+    string, k = data[0], int(data[1])
+    results = []
+    for part in zip(*[iter(string)]*k):
+        d = dict()
+        value = "".join([d.setdefault(x,x) for x in part if x not in d])
+        results.append(value)
+    return results
+    
