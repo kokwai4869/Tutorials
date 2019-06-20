@@ -22,10 +22,10 @@ def rearrange_list(array, array_size):
         new_array.append(array[int(array_size/2)])
     return new_array
 
-
-test_cases = int("1")
-for _ in range(test_cases):
-    array_size = int("11")
-    array = sorted(map(int, "10 20 30 40 50 60 70 80 90 100 110".split()))
-    new_array = rearrange_list(array, array_size)
-    print(new_array)
+if __name__ == "__main__":
+    test_cases = int("1")
+    for _ in range(test_cases):
+        array_size = int("11")
+        array = sorted(map(int, "10 20 30 40 50 60 70 80 90 100 110".split()))
+        new_array = rearrange_list(array, array_size)
+        print(new_array)
